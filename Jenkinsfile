@@ -18,19 +18,24 @@ pipeline {
 
         stage('Init'){
             steps{
-                sh """
+                withAWS(credentials: 'aws', region: 'us-east-1') {
+                    sh '''
                     cd terraform
-                    terraform init
-                """
+                        terraform init
+
+                    '''
+                }
             }
         }
 
         stage('Plan'){
             steps{
-                sh """
-                    cd terraform
-                    terraform plan
-                """
+                withAWS(credentials: 'aws', region: 'us-east-1') {
+                    sh '''
+                       cd terraform
+                       terraform plan
+                    '''
+                }
             }
         }
     }

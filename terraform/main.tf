@@ -15,8 +15,8 @@
 #   }
 # }
 
-resource "aws_instance" "catalogue" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+module "catalogue_instance" {
+  source  = "git::https://github.com/AcAvinash/terraform-aws-vpc.git"
   ami           = local.ami_id
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.catalogue_sg_id]
