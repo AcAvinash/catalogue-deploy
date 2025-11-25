@@ -1,5 +1,9 @@
 pipeline {
     agent { node { label 'AGENT-1' } }
+
+    options {
+        ansiColor('xterm')
+    }
     parameters {
         string(name: 'version', defaultValue: '')
     }
